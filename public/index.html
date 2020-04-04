@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 <script src="content/js/jquery.min.js"></script>
 <script src="content/js/bootstrap.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 body {font-size:16px;}
@@ -48,7 +48,7 @@ body {font-size:16px;}
     <h1 class="w3-jumbo"><b>Car thing</b></h1>
     <h1 class="w3-xxxlarge w3-text-red"><b>Buy</b></h1>
 <p>
-
+buy a car
 </p>
 <hr style="width:50px;border:5px solid red" class="w3-round">
 <select id="cars">
@@ -58,7 +58,17 @@ body {font-size:16px;}
   <option value="opel">Opel</option>
   <option value="audi">Audi</option>
 </select>
-  
+<select id="models">
+  <option value ="">Choose a model</option>
+  <option value="??">??</option>
+  <option value="??">???</option>
+  <option value="??">???</option>
+  <option value="??">????</option>
+</select>
+
+
+<hr>
+<button type="button">submit</button>
   </div>
   
   <!---- (first tab) -->
@@ -79,46 +89,39 @@ body {font-size:16px;}
 
   <!-- Second tab -->
   <div class="w3-container" id="buy" style="margin-top:75px">
-    <h1 class="w3-xxxlarge w3-text-red"><b>Services.</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p>this section will be for buying</p>
-  
+    <h1 class="w3-xxxlarge w3-text-red"><b>Sell.</b></h1>
+  <p>sell a car</p>
+      <hr style="width:50px;border:5px solid red" class="w3-round">
+      <select id="carssell">
+        <option value ="">Choose a make</option>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="opel">Opel</option>
+        <option value="audi">Audi</option>
+      </select>
+      <select id="models">
+        <option value ="">Choose a model</option>
+        <option value="??" onselect="alert('jhhj')">?</option>
+        <option value="??">???</option>
+        <option value="??">???</option>
+        <option value="??">????</option>
+      </select>
+      <hr>
+      <button type="button">submit</button>
+
+
+
   </div>
   
   <!-- Designers -->
   <div class="w3-container" id="sell" style="margin-top:75px">
-    <h1 class="w3-xxxlarge w3-text-red"><b>Designers.</b></h1>
+    <h1 class="w3-xxxlarge w3-text-red"><b>Accessories.</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
     <p>for selling a car 
    </p>
   </div>
 
 
-  <!-- Packages / Pricing Tables
-  <div class="w3-container" id="packages" style="margin-top:75px">
-    <h1 class="w3-xxxlarge w3-text-red"><b>Packages.</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p>Some text our prices. Lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure</p>
-  </div>
-
-  <div class="w3-row-padding">
-    <div class="w3-half w3-margin-bottom">
-      <ul class="w3-ul w3-light-grey w3-center">
-        <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>
-        <li class="w3-padding-16">Floorplanning</li>
-        <li class="w3-padding-16">10 hours support</li>
-        <li class="w3-padding-16">Photography</li>
-        <li class="w3-padding-16">20% furniture discount</li>
-        <li class="w3-padding-16">Good deals</li>
-        <li class="w3-padding-16">
-          <h2>$ 199</h2>
-          <span class="w3-opacity">per room</span>
-        </li>
-        <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
-        </li>
-      </ul>
-    </div>
         
     <div class="w3-half">
       <ul class="w3-ul w3-light-grey w3-center">
@@ -183,6 +186,7 @@ function onClick(element) {
   var captionText = document.getElementById("caption");
   captionText.innerHTML = element.alt;
 }
+
 </script>
 
 </body>
