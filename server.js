@@ -12,9 +12,7 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 
-db.sequelize.sync({
-    force: true
-}).then(function () {
+db.sequelize.sync().then(function () {
     app.listen(PORT, function () {
         console.log("App listening on PORT " + PORT);
     });
