@@ -71,6 +71,7 @@ body {
     align-items: center;
     font-family: 'Playball', cursive;
     letter-spacing: 4px;
+    text-decoration: underline overline;
 }
 
 .titleText::before {
@@ -102,9 +103,9 @@ body {
     background-color: rgb(49, 49, 49);
     transform-origin: top;
     transform: skewX(40deg) translateX(-15px);
-    font-size: 2.1em;
+    font-size: 1.9em;
     color: white;
-    padding: 2%;
+    padding: 2% 2% 2% 4%;
     font-family: 'Playball', cursive;
 }
 
