@@ -1,1 +1,189 @@
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+
+body {
+    font-size: 16px; 
+    margin: 0; 
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(49, 49, 49);
+}
+
+.titleContainer {
+    position: relative;
+    margin-top: 15%;
+    margin-left: 6%;
+    max-width: 800px;
+    transform: skewY(-20deg) rotateZ(15deg);
+}
+
+.titleImg {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    transform-origin: bottom;
+    transform: skewX(40deg);
+    background-image: url(./car2.jpg);
+}
+
+.titleImg::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    z-index: -1;
+    /* background-color: red; */
+}
+
+.titleImg::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    z-index: -2;
+    background-color: red;
+    filter: blur(15px);
+}
+
+.titleImg img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.titleText {
+    width: 100%;
+    position: relative;
+    font-size: 4em;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Playball', cursive;
+    letter-spacing: 4px;
+    text-decoration: underline overline;
+}
+
+.titleText::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    z-index: -1;
+    background-color: rgb(49, 49, 49);
+    border-radius: 5px;
+}
+
+.titleText::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    z-index: -2;
+    background-color: red;
+    filter: blur(15px);
+}
+
+.companyText {
+    width: 700px;
+    background-color: rgb(49, 49, 49);
+    transform-origin: top;
+    transform: skewX(40deg) translateX(-15px);
+    font-size: 1.9em;
+    color: white;
+    padding: 2% 2% 2% 4%;
+}
+
+.companyText::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    z-index: -1;
+    background-color: rgb(49, 49, 49);
+    border-radius: 5px;
+}
+
+.companyText::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    z-index: -2;
+    background-color: red;
+    filter: blur(15px);
+}
+
+.homeBtns {
+    margin-top: 17.5%;
+    margin-bottom: 15%;
+}
+
+.homeBtns button {
+    width: 250px;
+    height: 50px;
+    margin-left: 10%;
+    font-size: 25px;
+    background: transparent;
+    color: red;
+    border: 3px solid red;
+    letter-spacing: 3px;
+    cursor: pointer;
+    border-radius: 100px;
+    transition: 1.5s;
+}
+
+.homeBtns button:hover {
+    box-shadow: 0 5px 50px 0 red inset, 0 5px 50px 0 red,
+                0 5px 50px 0 red inset, 0 5px 50px 0 red;
+    color: white;
+    border: 3px solid white;
+}
+
+#footer {
+    max-height: 60px;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    border-top: 2px solid red;
+    background-color: black;
+}
+
+#footer div {
+    margin: 0 5% 0 5%;
+    padding-top: 0.5%;
+}
+
+#footer .bbb {
+    color: red;
+}
+
+#footer .copyright {
+    font-size: 12px;
+}
+
+.fa-github:hover {
+    color: white;
+}
