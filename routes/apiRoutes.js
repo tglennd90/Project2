@@ -1,33 +1,45 @@
+//requires the models folder
 var db = require("../models");
+//exports all of the code in the function
 module.exports = function (app) {
-  app.post("/api/cars", function (req, res) {
-    console.log(req.body.car);
-    db.Cars.findAll({
-        where: {
-          make: req.body.car
-        }
-      })
-      .then(function (dbPost) {
-        var dbCars = dbPost
-        var carsArr = [];
-        for (let i = 0; i < dbCars.length; i++) {
-          carsArr.push(dbCars[i].dataValues);
-        }
-
-        var obj = {
-          cars: carsArr
-        }
-      
-     res.json(obj)
-       
-        app.post("/api/cars/make", function (req, res) {
-     res.json(obj.cars)
-        });
-     
-        
-
-
-      });
+  //posts to the /api/cars/make endpoint
+  app.post("/api/cars/make", function (req, res) {
+    //sequelize query to select all of the rows in the table cars
+    db.Cars.findAll().then(function (dbGet) {
+      //carMakeArr is set to empty array
+      var carsMakeArr = [];
+    //loops the dbGet parameter (mysql select response)
+      for (let i = 0; i < dbGet.length; i++) {
+        //pushes the desired vales to the carsMakeArr
+        carsMakeArr.push(dbGet[i].dataValues);
+      };
+      //puts the array into an
+      var obj = {
+        cars: carsMakeArr
+      };
+      res.json(obj)
+    });
   });
-
+  app.get("/api/cars", function (req, res) {
+    console.log(req.query.car);
+  
+    db.Cars.findAll({
+      where: {
+        make: req.query.car
+      }
+    }).then(function (dbPost) {
+      var dbCars = dbPost
+      var carsArr = [];
+      for (let i = 0; i < dbCars.length; i++) {
+        carsArr.push(dbCars[i].dataValues);
+      };
+      var obj = {
+        cars: carsArr
+      };
+      res.json(obj)
+      app.get("/api/cars/model", function (req, res) {
+        res.json(obj.cars)
+      });
+    });
+  });
 };
