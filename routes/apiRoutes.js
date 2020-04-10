@@ -42,4 +42,20 @@ module.exports = function (app) {
       });
     });
   });
+  app.post("/api/sell", function(req, res){
+console.log(req.body.link);
+ db.Cars.create({
+make: req.body.make,
+model: req.body.model,
+color: req.body.color,
+carYear: req.body.year,
+miles: req.body.miles,
+price: req.body.price,
+imageLink: req.body.link,
+createdAt: 1200,
+updatedAt: 1200
+ }).then(function(dbPost){
+   res.json(dbPost)
+ });
+  });
 };
