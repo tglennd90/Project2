@@ -47,7 +47,13 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             validate: {
                  len: [1, 100000]
-              
+            }
+        },
+        carTableId: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
             }
         }
 

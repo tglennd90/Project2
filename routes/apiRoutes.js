@@ -73,10 +73,16 @@ module.exports = function (app) {
       miles: req.body.miles,
       price: req.body.price,
       imageLink: req.body.imageLink,
+      carTableId: req.body.id,
       createdAt: 1200,
       updatedAt: 1200
     }).then(function (dbPost) {
       res.json(dbPost);
     });
   });
+  app.get("/api/cart/find", function (req, res) {
+    db.Cart.findAll().then(function (dbGet) {
+      res.json(dbGet);
+    })
+  })
 };
