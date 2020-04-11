@@ -21,8 +21,8 @@ $.ajax({
         }));
     };
     $("#cars").on("change", function () {
-    
-        
+
+
         $("#models").empty()
         $("#carItemList").empty();
         $(".carItemDisplay").empty();
@@ -45,7 +45,7 @@ $.ajax({
                 if (modelArr.indexOf(res.cars[j].model) === -1) {
                     modelArr.push(res.cars[j].model);
                 };
-              
+
             };
             console.log(modelArr);
             for (let x = 0; x < modelArr.length; x++) {
@@ -53,7 +53,7 @@ $.ajax({
                     value: modelArr[x],
                     text: modelArr[x]
                 }));
-                
+
             }
         });
     });
@@ -80,7 +80,7 @@ $.ajax({
     //------------------------------------------
     $("#buySubmit").on("click", function (e) {
         e.preventDefault();
-        
+
         var counter = 0;
         for (let k = 0; k < carResults.length; k++) {
             var carItemDisplay = $(".carItemDisplay");
@@ -95,14 +95,14 @@ $.ajax({
             carItemDisplay.append(ul);
             $("#carItemList" + counter).append("<li>" + carResults[k].make + " " + carResults[k].model + "</li>", "<li> miles: " + carResults[k].miles + "</li>", "<li> Year: " + carResults[k].carYear + "</li>", "<li> color: " + carResults[k].color + "</li>");
             var priceDisplay = $("<div>");
-            priceDisplay.attr("id", "price" + counter) 
+            priceDisplay.attr("id", "price" + counter)
             priceDisplay.append("<h3> Only: " + carResults[k].price + "<h3>")
             carItemDisplay.append(priceDisplay);
             carItemDisplay.append(addToCartBtn);
             counter++;
         };
-    
-        $(".addToCart").on("click", function(event) {
+
+        $(".addToCart").on("click", function (event) {
             event.preventDefault();
             var addToCartSelect = $(this).val();
             console.log(carResults[addToCartSelect]);
@@ -111,7 +111,7 @@ $.ajax({
                 method: "POST",
                 url: "/api/cart",
                 data: carResults[addToCartSelect]
-            }).then(function(res) {
+            }).then(function (res) {
                 console.log(res)
             })
         });
@@ -190,4 +190,27 @@ $("#sellSubmit").on("click", function (e) {
     $("#carMiles").empty();
     $("#carPrice").empty();
     $("#imageLink").empty();
+});
+
+$.ajax({
+    method: "GET",
+    url: "api/cart/find",
+}).then(function (res) {
+    console.log(res);
+    var counter = 0;
+    var totalPrice = 0;
+    for (let n = 0; n < res.length; n++) {
+        var cartItemDisplay = $(".cartItemDisplay");
+        var image = $("<img>");
+        image.attr("class", "carPhoto");
+        $(image).attr("src", res[n].imageLink);
+        cartItemDisplay.append(image);
+        var ul = $("<ul>");
+        ul.attr("id", "cartItemList" + counter)
+        cartItemDisplay.append(ul);
+        $("#cartItemList" + counter).append("<li>" + res[n].make + " " + res[n].model + "</li>", "<li> miles: " + res[n].miles + "</li>", "<li> Year: " + res[n].carYear + "</li>", "<li> color: " + res[n].color + "</li>");
+        counter++;
+        totalPrice += parseInt(res[n].price)
+    };
+    $(".cartItem").append("<p>Total Price: $" + totalPrice);
 });
