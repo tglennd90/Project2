@@ -62,4 +62,27 @@ module.exports = function (app) {
       res.json(dbPost);
     });
   });
+  app.post("/api/cart", function(req, res) {
+    console.log(req.body)
+    console.log(req.body.carYear)
+    db.Cart.create({
+      make: req.body.make,
+      model: req.body.model,
+      color: req.body.color,
+      carYear: req.body.carYear,
+      miles: req.body.miles,
+      price: req.body.price,
+      imageLink: req.body.imageLink,
+      carTableId: req.body.id,
+      createdAt: 1200,
+      updatedAt: 1200
+    }).then(function (dbPost) {
+      res.json(dbPost);
+    });
+  });
+  app.get("/api/cart/find", function (req, res) {
+    db.Cart.findAll().then(function (dbGet) {
+      res.json(dbGet);
+    })
+  })
 };
