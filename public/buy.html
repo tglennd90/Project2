@@ -5,13 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 body {font-size:16px;}
 .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
 .w3-half img:hover{opacity:1}
+.carPhoto{
+  width: 300px;
+}
 </style>
 <body>
 
@@ -19,14 +23,10 @@ body {font-size:16px;}
 <nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
   <div class="w3-container">
-    <h3 class="w3-padding-64"><b>Car<br>thing</b></h3>
+    <h3 class="w3-padding-64"><b>Travis'<br>List</b></h3>
   </div>
   <div class="w3-bar-block">
     <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
-    <a href="#buy" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Buy</a> 
-    <a href="#sell" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Sell</a> 
-    <a href="#parts" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Parts</a> 
-    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
     <a href="/buy" class="w3-bar-item w3-button w3-hover-white">Buy</a>
     <a href="/sell"  class="w3-bar-item w3-button w3-hover-white">Sell</a>
     <a href="/cart" class="w3-bar-item w3-button w3-hover-white">Cart</a>
@@ -36,7 +36,7 @@ body {font-size:16px;}
 <!-- Top menu on small screens -->
 <header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
   <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
-  <span>Company Name</span>
+  <span>Travis' List</span>
 </header>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -47,7 +47,7 @@ body {font-size:16px;}
 
   <!-- Header -->
   <div class="w3-container" style="margin-top:80px" id="buy">
-    <h1 class="w3-jumbo"><b>Car thing</b></h1>
+    <h1 class="w3-jumbo"><b>Travis' List</b></h1>
     <h1 class="w3-xxxlarge w3-text-red"><b>Buy</b></h1>
 <p>
 buy a car
@@ -64,17 +64,15 @@ buy a car
 <hr>
 <button id="buySubmit" type="button">submit</button>
   </div>
-  <hr>
   
+
+<div class="jumbodron">
   <div class="carItem">
     <div class="carItemDisplay">
       <img id="carPhoto">
     </div>
-    <div class="carItemInfo">
-        <ul id="carItemList">
-
-        </ul>
-    </div>
+    <div class="carItemInfo"> </div>
+</div>
 </div>
 
   <!---- (first tab) -->
@@ -82,54 +80,6 @@ buy a car
     <div class="w3-half">
     
     </div>
-
-
-  <!-- Modal for full size images on click-->
-  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
-    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
-    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-      <img id="img01" class="w3-image">
-      <p id="caption"></p>
-    </div>
-  </div>
-
-  <!-- Second tab -->
-  <div class="w3-container" id="buy" style="margin-top:75px">
-    <h1 class="w3-xxxlarge w3-text-red"><b>Sell.</b></h1>
-  <p>sell a car</p>
-      <hr style="width:50px;border:5px solid red" class="w3-round">
-      <select id="carssell">
-        <option value ="">Choose a make</option>
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="opel">Opel</option>
-        <option value="audi">Audi</option>
-      </select>
-      <select id="models">
-        <option value ="">Choose a model</option>
-        <option value="??" onselect="alert('jhhj')">?</option>
-        <option value="??">???</option>
-        <option value="??">???</option>
-        <option value="??">????</option>
-      </select>
-      <hr>
-      <button type="button">submit</button>
-
-
-
-  </div>
-  
-  <!-- Designers -->
-  <div class="w3-container" id="sell" style="margin-top:75px">
-    <h1 class="w3-xxxlarge w3-text-red"><b>Accessories.</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p>for selling a car 
-   </p>
-  </div>
-
-
-  
-  
 
 <!-- End page content -->
 </div>
