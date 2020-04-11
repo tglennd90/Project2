@@ -129,22 +129,22 @@ function sell() {
     var sellPrice = $("#carPrice").val();
     var imageLink = $("#imageLink").val();
     if (sellMake === "") {
-        return alert("select a make")
+        return alert("Select a make")
     };
     if (sellPrice >= 50000) {
         return alert("Too Much");
     };
     if (sellYear >= 2021 || sellYear <= 1929) {
-        return alert("Inter a Valad year Please")
+        return alert("Enter a valid year please")
     };
     if (sellMiles > 300000) {
-        return alert("too many miles")
+        return alert("Too many miles")
     };
     if (sellColor === "") {
-        return alert("Inter a Color please")
+        return alert("Enter a color please")
     };
     if (sellModel === "") {
-        return alert("inter a model please")
+        return alert("Enter a model please")
     };
 
     function isUrlExists(url, cb) {
@@ -171,26 +171,20 @@ function sell() {
                 price: parseInt(sellPrice) + parseInt(getPercent),
                 link: imageLink
             };
+            console.log(sellObj)
             $.ajax({
                 method: "POST",
                 url: "/api/sell",
                 data: sellObj
-            });
+            }).then(location.reload())
         } else if (status === 404) {
-            return alert("invalad image link");
+            return alert("Invalid image link");
         };
     });
 };
 $("#sellSubmit").on("click", function (e) {
     e.preventDefault();
     sell();
-    $("#carsSell").empty();
-    $("#carModel").empty();
-    $("#carColor").empty();
-    $("#carYear").empty();
-    $("#carMiles").empty();
-    $("#carPrice").empty();
-    $("#imageLink").empty();
 });
 
 $.ajax({
