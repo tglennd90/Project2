@@ -104,6 +104,7 @@ $.ajax({
 
         $(".addToCart").on("click", function (event) {
             event.preventDefault();
+            alert("Added Item To Cart")
             var addToCartSelect = $(this).val();
             console.log(carResults[addToCartSelect]);
 
@@ -196,9 +197,11 @@ $.ajax({
     method: "GET",
     url: "api/cart/find",
 }).then(function (res) {
-    console.log(res);
     var counter = 0;
     var totalPrice = 0;
+    var cart = {
+        items: res
+    }
     for (let n = 0; n < res.length; n++) {
         var cartItemDisplay = $(".cartItemDisplay");
         var image = $("<img>");
@@ -208,9 +211,41 @@ $.ajax({
         var ul = $("<ul>");
         ul.attr("id", "cartItemList" + counter)
         cartItemDisplay.append(ul);
-        $("#cartItemList" + counter).append("<li>" + res[n].make + " " + res[n].model + "</li>", "<li> miles: " + res[n].miles + "</li>", "<li> Year: " + res[n].carYear + "</li>", "<li> color: " + res[n].color + "</li>");
+        $("#cartItemList" + counter).append("<li>" + res[n].make + " " + res[n].model + "</li>", "<li> miles: " + res[n].miles + "</li>", "<li> Year: " + res[n].carYear + "</li>", "<li> color: " + res[n].color + "</li>" + "<button value=" + res[n].id + " class='removeFromCart'> Remove Item");
         counter++;
-        totalPrice += parseInt(res[n].price)
+        totalPrice += parseInt(res[n].price);
     };
     $(".cartItem").append("<p>Total Price: $" + totalPrice);
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //remove item from cart button
+    $(".removeFromCart").on("click", function(e){
+        e.preventDefault();
+        var itemToRemove = $(this).val();
+        itemToRemoveObj = {
+            item: itemToRemove
+        }
+        $.ajax({
+            method: "GET",
+            url: "/api/cart/remove",
+            data: itemToRemoveObj
+        });
+        location.reload();
+    });
+    //=============================================================
+    //process payment button
+    $("#processPayment").on("click", function(e){
+        e.preventDefault(); 
+        
+         
+        if(res.length === 0){
+          return  $(".cartItemDisplay").text("There are no items in the cart");
+        }  
+        $.ajax({
+            method: "GET",
+            url: "/api/cart/buy",
+            data: cart
+        });
+        location.reload();
+        location.replace("/endscreen")
+    });
 });

@@ -83,6 +83,32 @@ module.exports = function (app) {
   app.get("/api/cart/find", function (req, res) {
     db.Cart.findAll().then(function (dbGet) {
       res.json(dbGet);
-    })
-  })
+    });
+  });
+  app.get("/api/cart/remove", function(req, res){
+console.log(req.query.item);
+db.Cart.destroy({
+  where: {
+    id: req.query.item
+  }
+});
+  });
+  app.get("/api/cart/buy", function(req, res){
+console.log(req.query.items);
+var items = req.query.items
+for (let j = 0; j < items.length; j++) {
+  console.log(items[j].carTableId);
+  db.Cart.destroy({
+    where: {
+      id: items[j].id
+    }
+  });
+  db.Cars.destroy({
+    where: {
+      id: items[j].carTableId
+    }
+  });
+  
+}
+  });
 };
