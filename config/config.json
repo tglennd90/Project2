@@ -1,12 +1,7 @@
 {
   "development": {
-<<<<<<< HEAD
     "username": "Tatum",
     "password": "America1990",
-=======
-    "username": "Lee",
-    "password": "corsair098",
->>>>>>> 71804601b0cd57e457c2422331abec583db2d584
     "database": "cars_db",
     "host": "localhost",
     "dialect": "mysql"
