@@ -80,10 +80,13 @@ $.ajax({
     //------------------------------------------
     $("#buySubmit").on("click", function (e) {
         e.preventDefault();
-        var counter = 1;
+        
+        var counter = 0;
         for (let k = 0; k < carResults.length; k++) {
             var carItemDisplay = $(".carItemDisplay");
             var image = $("<img>");
+            var addToCartBtn = $("<button class='addToCart'>").attr("value", counter);
+            addToCartBtn.text("Add To Cart")
             image.attr("class", "carPhoto");
             $(image).attr("src", carResults[k].imageLink);
             carItemDisplay.append(image);
@@ -95,8 +98,23 @@ $.ajax({
             priceDisplay.attr("id", "price" + counter) 
             priceDisplay.append("<h3> Only: " + carResults[k].price + "<h3>")
             carItemDisplay.append(priceDisplay);
+            carItemDisplay.append(addToCartBtn);
             counter++;
         };
+    
+        $(".addToCart").on("click", function(event) {
+            event.preventDefault();
+            var addToCartSelect = $(this).val();
+            console.log(carResults[addToCartSelect]);
+
+            $.ajax({
+                method: "POST",
+                url: "/api/cart",
+                data: carResults[addToCartSelect]
+            }).then(function(res) {
+                console.log(res)
+            })
+        });
     });
 });
 //================================================
