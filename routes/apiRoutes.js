@@ -13,32 +13,39 @@ module.exports = function (app) {
         //pushes the desired vales to the carsMakeArr
         carsMakeArr.push(dbGet[i].dataValues);
       };
-      //puts the array into an
+      //puts the array into an object
       var obj = {
         cars: carsMakeArr
       };
       res.json(obj)
     });
   });
+  //gets the /api/cars endpoint
   app.get("/api/cars", function (req, res) {
+    //searches the database table Cars for all rows where make equals req.query.car
     db.Cars.findAll({
       where: {
         make: req.query.car
       }
     }).then(function (dbPost) {
       var dbCars = dbPost;
+      //carsArr is set to empty
       var carsArr = [];
+      //loops dbPost 
       for (let i = 0; i < dbCars.length; i++) {
+        //pushes the dataValues to carsArr
         carsArr.push(dbCars[i].dataValues);
       };
-      var obj = {
+      //puts carsArr into an object
+      var carObj = {
         cars: carsArr
       };
-      res.json(obj);
+      res.json(carObj);
     });
   });
+  //gets the /api/cars/model endpoint
   app.get("/api/cars/model", function (req, res) {
-    console.log(req.query.model);
+    //searches the database table Cars for all rows where model equals req.query.model
     db.Cars.findAll({
       where: {
         model: req.query.model
@@ -47,7 +54,9 @@ module.exports = function (app) {
       res.json(dbGetModel)
     });
   });
+  //posts to /api/sell endpoint
   app.post("/api/sell", function (req, res) {
+    //creates a new row in the database table Cars with all of the data from the request
     db.Cars.create({
       make: req.body.make,
       model: req.body.model,
@@ -62,9 +71,9 @@ module.exports = function (app) {
       res.json(dbPost);
     });
   });
+  //posts to the /api/cart endpoint
   app.post("/api/cart", function(req, res) {
-    console.log(req.body)
-    console.log(req.body.carYear)
+    //creates a new row in the database table Cart with all of the data from the request
     db.Cart.create({
       make: req.body.make,
       model: req.body.model,
@@ -80,35 +89,41 @@ module.exports = function (app) {
       res.json(dbPost);
     });
   });
+  //gets the /api/cart/find endpoint
   app.get("/api/cart/find", function (req, res) {
+    //finds all rows in the Cart table
     db.Cart.findAll().then(function (dbGet) {
       res.json(dbGet);
     });
   });
+  //gets the /api/cart/remove endpoint
   app.get("/api/cart/remove", function(req, res){
-console.log(req.query.item);
+//deletes all form the Cart table where id = req.query.item
 db.Cart.destroy({
   where: {
     id: req.query.item
   }
 });
   });
+  //gets the /api/cart/buy
   app.get("/api/cart/buy", function(req, res){
-console.log(req.query.items);
+    //shortens the req.query.items in the items
 var items = req.query.items
+//loops items
 for (let j = 0; j < items.length; j++) {
-  console.log(items[j].carTableId);
+//delets all from Cart table where id = items[j]
   db.Cart.destroy({
     where: {
       id: items[j].id
     }
   });
+  //delets all from the Cars table where id = items[j].carTableId
   db.Cars.destroy({
     where: {
       id: items[j].carTableId
     }
   });
   
-}
+};
   });
 };
