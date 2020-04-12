@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "Tatum",
-    "password": "America1990",
+    "username": "root",
+    "password": "root",
     "database": "cars_db",
     "host": "localhost",
     "dialect": "mysql"
