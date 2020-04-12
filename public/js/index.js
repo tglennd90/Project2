@@ -27,6 +27,7 @@ $.ajax({
         $("#carItemList").empty();
         $(".carItemDisplay").empty();
         $("#price").empty();
+        $(".carItemInfo").empty();
         $("#models").append($("<option>", {
             value: "",
             text: "Choose a model"
@@ -61,6 +62,7 @@ $.ajax({
         $("#carItemList").empty();
         $(".carItemDisplay").empty();
         $("#price").empty();
+        $(".carItemInfo").empty();
         var selectedModel = $(this).val();
         var selectedModelObj = {
             model: selectedModel
@@ -83,13 +85,13 @@ $.ajax({
 
         var counter = 0;
         for (let k = 0; k < carResults.length; k++) {
-            var carItemDisplay = $(".carItemDisplay");
+            var carItemDisplay = $(".carItemInfo");
             var image = $("<img>");
             var addToCartBtn = $("<button class='addToCart'>").attr("value", counter);
             addToCartBtn.text("Add To Cart")
             image.attr("class", "carPhoto");
             $(image).attr("src", carResults[k].imageLink);
-            carItemDisplay.append(image);
+            $(".carItemDisplay").append(image);
             var ul = $("<ul>");
             ul.attr("id", "carItemList" + counter)
             carItemDisplay.append(ul);
