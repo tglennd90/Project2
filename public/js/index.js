@@ -1,3 +1,4 @@
+$(".buyCard").hide();
 //reuqests the /api/cars/make endpoint
 $.ajax({
     method: "POST",
@@ -40,6 +41,7 @@ $.ajax({
         $(".carItemDisplay").empty();
         $("#price").empty();
         $(".carItemInfo").empty();
+        $(".buyCard").hide();
         //adds a placeholder option to the models select
         $("#models").append($("<option>", {
             value: "",
@@ -85,6 +87,7 @@ $.ajax({
         $(".carItemDisplay").empty();
         $("#price").empty();
         $(".carItemInfo").empty();
+        $(".buyCard").hide();
         //selectedModel is set to the value of the model option that was selected
         var selectedModel = $(this).val();
         //puts selectedModel into the selectedModelObj object
@@ -109,6 +112,7 @@ $.ajax({
     });
     //on click of the submit button on the buy page
     $("#buySubmit").on("click", function (e) {
+        $(".buyCard").show();
         e.preventDefault();
         //counter is set to 0 
         var counter = 0;
@@ -123,9 +127,10 @@ $.ajax({
             image.attr("class", "carPhoto");
             $(image).attr("src", carResults[k].imageLink);
             $(".carItemDisplay").append(image);
-            var ul = $("<ul>");
+            var ul = $("<ul class='carItemList'>");
             //uses the counter in the id to keep the lists of specs in the right card if there are multiple cars of the same make and model
             ul.attr("id", "carItemList" + counter)
+          //  ul.attr("class", "carItemList")
             carItemDisplay.append(ul);
             $("#carItemList" + counter).append("<li>" + carResults[k].make + " " + carResults[k].model + "</li>", "<li> miles: " + carResults[k].miles + "</li>", "<li> Year: " + carResults[k].carYear + "</li>", "<li> color: " + carResults[k].color + "</li>");
             var priceDisplay = $("<div>");
@@ -216,6 +221,8 @@ function sell() {
                 price: parseInt(sellPrice) + parseInt(getPercent),
                 link: imageLink
             };
+            console.log(sellObj);
+            
             //requests the /api/sell endpoint
             $.ajax({
                 method: "POST",

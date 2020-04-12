@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-<link rel="stylesheet" href="../public/styles/cart.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
 body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
@@ -15,6 +16,10 @@ body {font-size:16px;}
 .carPhoto{
   width: 300px;
 }
+.cartItemInfo {
+  border-bottom: 2px solid red;
+}
+
 </style>
 <body>
 
@@ -44,21 +49,21 @@ body {font-size:16px;}
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
     <!-- Card for holding cart item-->
-    <div class="cartItem">
+    <div class="jumbotron cartDisplay">
+      <div class="cartItem">
         <div class="cartItemDisplay">
     
         </div>
         <div class="cartItemInfo"></div>
     </div>
+    </div>
+ 
 
     <!-- Process Payment -->
     <div class="processPaymentDiv w3-container">
-    <a href="#"><button type="button" id="processPayment">Proceed with Transaction</button></a>
+    <a href="#"><button type="button" id="processPayment" style="background-color: red; color: white; border: red; transform: scale(2); margin-left: 7%;">Proceed with Transaction</button></a>
       </div>
-    <!-- Cancel/Clear Cart -->
-    <div class="clearCartDiv w3-container">
-    <a href="#"><button type="button" id="processPayment">Clear</button></a>
-    </div>
+    
 
 <!-- !End page content -->
 </div>
