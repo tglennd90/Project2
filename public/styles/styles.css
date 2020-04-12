@@ -28,7 +28,7 @@ body {
     height: 160px;
     transform-origin: bottom;
     transform: skewX(40deg);
-    background-image: url(./car2.jpg);
+    background-image: url(./car4.jpg);
 }
 
 .titleImg::before {
